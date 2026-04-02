@@ -4,18 +4,22 @@ import products from '@/data/product'
 export const useCartStore = defineStore('cart', {
   state: () => ({
     cartItems: JSON.parse(localStorage.getItem('cart')) || [],
+    products,
   }),
   getters: {
     cartProducts(state) {
-      return state.cartItems.map((item) => {
-        const product = products.find((p) => p.id === item.productId)
-        const discPrice = Math.floor(product.price * (100 - product.discountText)) / 100
-        return {
-          ...product,
-          qty: item.qty,
-          discPrice,
-        }
-      })
+      return state.cartItems
+        .map((item) => {
+          const product = state.products?.find((p) => p.id == item.productId)
+          if (!product) return null
+          const discPrice = Math.floor(product.price * (100 - product.discountText)) / 100
+          return {
+            ...product,
+            qty: item.qty,
+            discPrice,
+          }
+        })
+        .filter(Boolean)
     },
     originalTotal() {
       const totalPrice = this.cartProducts.reduce((sum, item) => sum + item.price * item.qty, 0)
@@ -27,7 +31,10 @@ export const useCartStore = defineStore('cart', {
       }, 0)
       return Math.round(total * 100) / 100
     },
-    totalCount: (state) => state.cartItems.reduce((sum, item) => sum + item.qty, 0),
+    totalCount: (state) =>
+      state.cartItems.reduce((sum, item) => {
+        return sum + (Number(item?.qty) || 0)
+      }, 0),
   },
   actions: {
     getDiscountPrice(product) {
