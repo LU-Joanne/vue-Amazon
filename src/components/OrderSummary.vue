@@ -5,7 +5,7 @@
         <div class="order-item-checkout">
             <div v-for="item in items" :key="item.id" class="d-flex py-3 border-bottom">
                 <div class="border border-light">
-                    <img :src="item.image" alt="" style="width: 60px;">
+                    <img :src="getProductImage(item.image)" alt="" style="width: 60px;">
                 </div>
                 <div class="item-description">
                     <div>
@@ -64,6 +64,8 @@
 </template>
 
 <script setup>
+import { getProductImage } from '@/store/image';
+
 
 defineProps({
     items: Array,

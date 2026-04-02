@@ -10,7 +10,7 @@
                 <li v-for="item in cart.cartProducts" :key="item.id" class="pt-4 pb-3 list-unstyled">
                     <div class="d-flex align-items-start gap-2 ">
                         <div>
-                            <img :src="item.image" alt="" class="me-3" style="width: 180px;">
+                            <img :src="getProductImage(item.image)" alt="" class="me-3" style="width: 180px;">
                         </div>
                         <div class="cart-product-detail">
                             <div class="container mb-2">
@@ -110,6 +110,7 @@
 
 <script setup>
 import { useCartStore } from '@/store/cart';
+import { getProductImage } from '@/store/image';
 
 const cart = useCartStore();
 

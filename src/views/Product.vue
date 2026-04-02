@@ -16,32 +16,32 @@
                     </li>
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                 </ul>
                 <div class="ms-1 ">
-                    <img :src="product.image" class="" style="max-width: 350px; max-height: 450px;">
+                    <img :src="getProductImage(product.image)" class="" style="max-width: 350px; max-height: 450px;">
                 </div>
             </div>
             <div class="center-Col">
@@ -49,7 +49,7 @@
                 <a href="#" class="link-secondary text-decoration-none p-0 fs-7">Visit the {{ product.store }}</a>
                 <div class="d-flex align-items-center">
                     <span class="me-1">{{ product.rating }}</span>
-                    <img :src="product.star" alt="product-star" class="product-star">
+                    <img :src="getRatingImage(product.star)" alt="product-star" class="product-star">
                 </div>
                 <div class="mb-1">
                     <span class="fs-7"><strong>7K+ bought</strong> in past month</span>
@@ -151,6 +151,7 @@
 import { useRoute } from 'vue-router';
 import { useCartStore } from '@/store/cart';
 import { computed, ref } from 'vue';
+import { getProductImage, getRatingImage } from '@/store/image';
 import products from '@/data/product';
 
 const route = useRoute();

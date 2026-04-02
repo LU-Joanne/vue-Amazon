@@ -2,7 +2,7 @@
 
     <div class="card bg-white gap-3 px-4 py-3" style="width: 18rem;">
 
-        <img :src="product.image" class="card-img mx-auto" alt="product-image">
+        <img :src="getProductImage(product.image)" class="card-img mx-auto" alt="product-image" />
         <div>
             <h2 class="card-title fw-normal fs-6 lh-base">
                 <router-link :to="`/product/${product.id}`" class="text-decoration-none text-dark d-block">{{
@@ -11,7 +11,7 @@
             </h2>
             <div class="d-flex align-items-center">
                 <span class="me-1">{{ product.rating }}</span>
-                <img :src="product.star" alt="product-star" class="product-star">
+                <img :src="getRatingImage(product.star)" alt="product-star" class="product-star">
             </div>
             <div class="mt-2">
                 <span class="position-relative">
@@ -32,6 +32,8 @@
 
 <script setup>
 import { computed } from 'vue'
+import { getProductImage, getRatingImage } from '@/store/image'
+
 const { product } = defineProps({
     product: Object
 })
