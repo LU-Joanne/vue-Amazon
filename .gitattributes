@@ -1,0 +1,8 @@
+# 忽略 build 檔（最重要）
+dist/* linguist-vendored
+
+# 忽略套件
+node_modules/* linguist-vendored
+
+# 強制 Vue 檔算 JavaScript
+*.vue linguist-language=JavaScript
