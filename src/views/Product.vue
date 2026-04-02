@@ -11,7 +11,7 @@
                 <ul class="list-unstyled mt-1">
                     <li class="mb-2 list-container mb-2">
                         <span>
-                            <img :src="product.image" class="img-fluid">
+                            <img :src="getProductImage(product.image)" class="img-fluid">
                         </span>
                     </li>
                     <li class="mb-2 list-container mb-2">
