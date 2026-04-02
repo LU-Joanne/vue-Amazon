@@ -6,8 +6,8 @@ import vueDevTools from 'vite-plugin-vue-devtools'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/vue-Amazon/',
   plugins: [vue(), vueDevTools()],
+  base: '/vue-Amazon/',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
