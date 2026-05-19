@@ -1,6 +1,6 @@
 <template>
     <div class="cart">
-        <div class="bg-white p-4">
+        <div class="bg-white p-2 p-xl-4">
             <h2 class="fs-3 fw-bold">Shopping Cart</h2>
             <div class="cart-price-text">
                 <span>price</span>
@@ -10,7 +10,7 @@
                 <li v-for="item in cart.cartProducts" :key="item.id" class="pt-4 pb-3 list-unstyled">
                     <div class="d-flex align-items-start gap-2 ">
                         <div>
-                            <img :src="getProductImage(item.image)" alt="" class="me-3" style="width: 180px;">
+                            <img :src="getProductImage(item.image)" alt="" class="me-3 cart-product-img">
                         </div>
                         <div class="cart-product-detail">
                             <div class="container mb-2">
@@ -146,6 +146,10 @@ const cart = useCartStore();
     background: #cfcfcf;
     margin: 0 1px;
     border-top: 0;
+}
+
+.cart-product-img {
+    width: 180px;
 }
 
 .cart-product-title {
